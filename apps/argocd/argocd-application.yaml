@@ -16,7 +16,7 @@ spec:
       targetRevision: 9.5.22
       helm:
         valueFiles:
-          - $repo/apps/argocd-values.yaml
+          - $repo/apps/argocd/argocd-values.yaml
     - repoURL: https://github.com/agusikprogramusik/platform.git
       targetRevision: main
       ref: repo
