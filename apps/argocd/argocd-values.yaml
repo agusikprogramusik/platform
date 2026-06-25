@@ -1,0 +1,7 @@
+dex:
+  enabled: false
+
+server:
+  insecure: true
+  metrics:
+    enabled: false
