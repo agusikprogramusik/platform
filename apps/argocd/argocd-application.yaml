@@ -19,7 +19,7 @@ spec:
           - $repo/apps/argocd-values.yaml
     - repoURL: https://github.com/agusikprogramusik/platform.git
       targetRevision: main
-      id: repo
+      ref: repo
   syncPolicy:
     automated:
       prune: true
