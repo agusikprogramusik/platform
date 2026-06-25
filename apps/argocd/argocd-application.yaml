@@ -13,13 +13,13 @@ spec:
   sources:
     - repoURL: ghcr.io/argoproj/argo-helm
       chart: argo-cd
-      targetRevision: 9.5.22
+      targetRevision: '9.x'
       helm:
         valueFiles:
-          - $values/apps/argocd-values.yaml
+          - $repo/apps/argocd/argocd-values.yaml
     - repoURL: https://github.com/agusikprogramusik/platform.git
       targetRevision: main
-      ref: values
+      ref: repo
   syncPolicy:
     automated:
       prune: true
