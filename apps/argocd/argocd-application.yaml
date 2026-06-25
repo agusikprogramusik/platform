@@ -17,7 +17,7 @@ spec:
       helm:
         valueFiles:
           - $values/apps/argocd-values.yaml
-    - repoURL: https://github.com/twoj-org/k8s-gitops.git
+    - repoURL: https://github.com/agusikprogramusik/platform.git
       targetRevision: main
       ref: values
   syncPolicy:
