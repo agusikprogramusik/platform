@@ -1,19 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: argocd
+  name: kube-prometheus-stack
   namespace: argocd
 spec:
   goTemplate: true
   generators:
     - list:
         elements:
-          - appName: argocd
-            appNamespace: argocd
-            chartRepoURL: ghcr.io/argoproj/argo-helm
-            chartName: argo-cd
-            chartVersion: '9.5.22'
-            valuesFile: $repo/apps/argocd/argocd-values.yaml
+          - appName: kube-prometheus-stack
+            appNamespace: kube-prometheus-stack
+            chartRepoURL: ghcr.io/prometheus-community/charts
+            chartName: kube-prometheus-stack
+            chartVersion: '87.1.0'
+            valuesFile: $repo/apps/prom-kube-stack/kube-prom-stack-values.yaml
   template:
     metadata:
       name: '{{ .appName }}'

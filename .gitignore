@@ -1,4 +1,4 @@
 argo
 argo-cd
 argo-workflows
-*kube*
+kube-arangodb
