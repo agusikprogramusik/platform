@@ -13,7 +13,7 @@ spec:
   sources:
     - repoURL: ghcr.io/prometheus-community/charts
       chart: kube-prometheus-stack
-      targetRevision: HEAD
+      targetRevision: '87.2.0'
       helm:
         valueFiles:
           - $repo/apps/prom-kube-stack/kube-prom-stack-values.yaml
@@ -25,5 +25,4 @@ spec:
       prune: true
       selfHeal: true
     syncOptions:
-      - ServerSideApply=true
       - CreateNamespace=true
