@@ -13,7 +13,7 @@ spec:
   sources:
     - repoURL: ghcr.io/prometheus-community/charts
       chart: kube-prometheus-stack
-      targetRevision: '*'
+      targetRevision: HEAD
       helm:
         valueFiles:
           - $repo/apps/prom-kube-stack/kube-prom-stack-values.yaml
