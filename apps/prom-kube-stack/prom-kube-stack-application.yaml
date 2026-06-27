@@ -1,44 +1,29 @@
 apiVersion: argoproj.io/v1alpha1
-kind: ApplicationSet
+kind: Application
 metadata:
   name: kube-prometheus-stack
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
-  goTemplate: true
-  generators:
-    - list:
-        elements:
-          - appName: kube-prometheus-stack
-            appNamespace: kube-prometheus-stack
-            chartRepoURL: ghcr.io/prometheus-community/charts
-            chartName: kube-prometheus-stack
-            chartVersion: '87.2.0'
-            valuesFile: $repo/apps/prom-kube-stack/kube-prom-stack-values.yaml
-  template:
-    metadata:
-      name: '{{ .appName }}'
-      namespace: argocd
-      finalizers:
-        - resources-finalizer.argocd.argoproj.io
-    spec:
-      project: default
-      destination:
-        server: https://kubernetes.default.svc
-        namespace: '{{ .appNamespace }}'
-      sources:
-        - repoURL: '{{ .chartRepoURL }}'
-          chart: '{{ .chartName }}'
-          targetRevision: '{{ .chartVersion }}'
-          helm:
-            valueFiles:
-              - '{{ .valuesFile }}'
-        - repoURL: https://github.com/agusikprogramusik/platform.git
-          targetRevision: main
-          ref: repo
-      syncPolicy:
-        automated:
-          prune: true
-          selfHeal: true
-        syncOptions:
-          - ServerSideApply=true
-          - CreateNamespace=true
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kube-prometheus-stack
+  sources:
+    - repoURL: ghcr.io/prometheus-community/charts
+      chart: kube-prometheus-stack
+      targetRevision: '87.2.0'
+    - repoURL: https://github.com/agusikprogramusik/platform.git
+      targetRevision: main
+      ref: repo
+  helm:
+    valueFiles:
+      - $repo/apps/prom-kube-stack/kube-prom-stack-values.yaml
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - ServerSideApply=true
+      - CreateNamespace=true
