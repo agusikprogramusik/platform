@@ -12,8 +12,7 @@ spec:
             appNamespace: argocd
             chartRepoURL: ghcr.io/argoproj/argo-helm
             chartName: argo-cd
-            chartVersion: 9.x
-            valuesFile: $repo/apps/argocd/argocd-values.yaml
+            chartVersion: '9.x'
   template:
     metadata:
       name: '{{ .appName }}'
@@ -29,9 +28,7 @@ spec:
         - repoURL: '{{ .chartRepoURL }}'
           chart: '{{ .chartName }}'
           targetRevision: '{{ .chartVersion }}'
-          helm:
-            valueFiles:
-              - '{{ .valuesFile }}'
+          helm: {}
         - repoURL: https://github.com/agusikprogramusik/platform.git
           targetRevision: main
           ref: repo
@@ -41,3 +38,6 @@ spec:
           selfHeal: true
         syncOptions:
           - CreateNamespace=true
+        helm:
+          valueFiles:
+            - $repo/apps/argocd/argocd-values.yaml
