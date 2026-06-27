@@ -12,7 +12,7 @@ spec:
             appNamespace: kube-prometheus-stack
             chartRepoURL: ghcr.io/prometheus-community/charts
             chartName: kube-prometheus-stack
-            chartVersion: '87.1.0'
+            chartVersion: '*'
             valuesFile: $repo/apps/prom-kube-stack/kube-prom-stack-values.yaml
   template:
     metadata:
