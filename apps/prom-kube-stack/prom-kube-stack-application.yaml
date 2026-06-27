@@ -14,12 +14,12 @@ spec:
     - repoURL: ghcr.io/prometheus-community/charts
       chart: kube-prometheus-stack
       targetRevision: '87.2.0'
+      helm:
+        valueFiles:
+          - $repo/apps/prom-kube-stack/kube-prom-stack-values.yaml
     - repoURL: https://github.com/agusikprogramusik/platform.git
       targetRevision: main
       ref: repo
-  helm:
-    valueFiles:
-      - $repo/apps/prom-kube-stack/kube-prom-stack-values.yaml
   syncPolicy:
     automated:
       prune: true
