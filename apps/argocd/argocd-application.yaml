@@ -12,7 +12,7 @@ spec:
             appNamespace: argocd
             chartRepoURL: ghcr.io/argoproj/argo-helm
             chartName: argo-cd
-            chartVersion: '9.5.22'
+            chartVersion: '*'
             valuesFile: $repo/apps/argocd/argocd-values.yaml
   template:
     metadata:
