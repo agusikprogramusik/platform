@@ -9,3 +9,6 @@ httpRoute:
 
 serviceAccount:
   create: false
+
+imagePullSecrets:
+  - name: ghcr-secret
