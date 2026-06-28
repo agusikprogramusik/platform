@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - platform-repo.yaml
   - kube-prom-stack-repo.yaml
+  - helm-charts-repo.yaml

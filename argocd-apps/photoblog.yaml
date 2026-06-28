@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: photoblog
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: photoblog
+  sources:
+    - repoURL: ghcr.io/agusikprogramusik/helm-charts
+      chart: photoblog
+      targetRevision: '*'
+      helm:
+        valueFiles:
+          - $repo/apps/photoblog/photoblog-values.yaml
+    - repoURL: https://github.com/agusikprogramusik/platform.git
+      targetRevision: main
+      ref: repo
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - ServerSideApply=true
+      - CreateNamespace=true
