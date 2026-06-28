@@ -1,16 +1,13 @@
 nameOverride: photoblog
-
 ingress:
   enabled: false
-
 autoscaling:
   enabled: false
-
 httpRoute:
   enabled: false
-
 serviceAccount:
   create: false
-
 imagePullSecrets:
   - name: ghcr-secret
+image:
+  tag: 5af243
