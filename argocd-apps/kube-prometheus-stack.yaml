@@ -16,7 +16,7 @@ spec:
       targetRevision: '*'
       helm:
         valueFiles:
-          - $repo/apps/prom-kube-stack/kube-prom-stack-values.yaml
+          - $repo/apps/kube-prom-stack/kube-prom-stack-values.yaml
     - repoURL: https://github.com/agusikprogramusik/platform.git
       targetRevision: main
       ref: repo
