@@ -11,8 +11,8 @@ spec:
     server: https://kubernetes.default.svc
     namespace: photoblog
   sources:
-    - repoURL: ghcr.io/agusikprogramusik/helm-charts
-      chart: photoblog
+    - repoURL: ghcr.io
+      chart: agusikprogramusik/helm-charts/photoblog
       targetRevision: '*'
       helm:
         valueFiles:
